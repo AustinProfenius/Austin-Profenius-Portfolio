@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block head %} <style>
+  img {
+    border-radius: 50%;
+  }
+  </style> {% endblock %}
+
+{% block body %} 
+<!-- TODO list friends self join probs-->
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h1>You Have {{working}} Friends</h1>
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Your Friends</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% if listOfFriends != None %}
+                {% for friend in listOfFriends %}
+                    <tr>
+                        <td><img src="/static/profile-pics/{{friend.profile_path}}" alt="pic" height="50" width="50"><a href="/profile/{{friend.user_id}}">  {{ friend.full_name }}</a></td> 
+                    </tr>
+                {% endfor %}
+            {%endif%}
+            
+            
+
+          </tbody>
+      </table>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+<!-- home page with list of recent posts by friends -->
+{% block head %}
+<style>
+  img {
+    border-radius: 50%;
+  }
+  </style>  {% endblock %}
+
+{% block body %}
+<form class="form-inline" action="/search" method="POST">
+    <div class="form-group mb-2">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="inputPassword2" class="sr-only">search for friends</label>
+      <input type="text" class="form-control" name="searchCriteria" id="search" placeholder="search for friends">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">search</button>
+  </form>
+
+  <div class="col-6"></div>
+
+  <form class="form-inline" action="/post" method="Post">
+    <div class="form-group mb-2">
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="inputpost" class="sr-only">What's on your mind?</label>
+      <input type="text" class="form-control" name="userpost"  id="post" placeholder="Create Post">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">post</button>
+  </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4"><h3>Recent Activity</h3></div>
+      <div class="col-4"></div>
+
+      
+        
+        
+          {% if postsandlikes != None %}
+            {% for postandlike in postsandlikes %}
+            <div class="container">
+              <div class="row">
+                <div class="col-2"></div>
+            
+              
+                <div class="col-1">
+                  <img src="/static/profile-pics/{{postandlike[3].profile_path}}" alt="pic" height="75" width="75"> 
+                </div>
+                <div class="col-6">
+                <div class="list-group">
+                  <a href="/viewpost/{{ postandlike[0].post_id }}" class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{postandlike[0].poster_full_name}}</h5>
+                      <small>{{ postandlike[0].post_datetime}}</small>
+                    </div>
+                    <p class="mb-1">{{postandlike[0].post_entry}}</p>
+
+                    <div class="dropdown">
+                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ postandlike[1]|length }} Likes
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        {% if postandlike[1] != None %}
+                        {% for like in postandlike[1] %}
+                          <a class="dropdown-item" href="/profile/{{like.liker_id}}">{{like.like_name}}</a>
+                        {%endfor%}
+                        {% endif %}
+                      </div>
+                      {% if postandlike[2] != True %}
+                        <a href="/likeposthome/{{ postandlike[0].post_id }}">
+                          <button type="button"  class="btn btn-secondary">Like Post</button>
+                        </a>
+                      {%endif%}
+                    </div>
+                  </a>
+                </div>
+         
+                </div>
+          
+                <div class="col-3"></div>
+              </div>
+            </div>
+        
+            {% endfor %}
+          {% endif %}
+        
+   
+
+
+<!-- TODO create list of posts from friends and self-->
+{% endblock %}

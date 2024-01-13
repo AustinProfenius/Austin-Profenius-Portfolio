@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+<!-- generate profile by user id -->
+
+{% block head %} {% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+       <form class="form-inline" action="/search" method="POST">
+          <div class="form-group mb-2">
+            <label for="inputPassword2" class="sr-only">search for friends</label>
+            <input type="text" class="form-control" name="searchCriteria" id="search" placeholder="search for friends">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">search</button>
+        </form>
+    </div>
+   
+      <div class="col-1">
+        {% if alreadyFriends != True %}
+          {% if user.user_id != curruser.user_id %}
+            <form class="form-inline" action="/addfriend/{{user.user_id}}" method="POST">
+              <button type="submit" class="btn btn-primary mb-2">Add Friend</button>
+            </form>
+          {% endif %}
+        {%endif%}
+        {% if sent %}
+          <h3>
+            Friend Request Sent
+          </h3>
+        {%endif%}
+      </div>
+
+    <div class="col-5"></div>
+    {% if user.user_id == curruser.user_id %}
+      <div class="col-2">
+        <form class="form-inline" action="/postprofile" method="Post">
+          <div class="form-group mb-2">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="inputpost" class="sr-only">What's on your mind?</label>
+            <input type="text" class="form-control" name="userpost"  id="post" placeholder="Create Post">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">post</button>
+        </form>
+    {% else %}
+    {% if alreadyHaveChat != True%}
+      <form action="/startchat/{{user.user_id}}" method="Post">
+        <button type="submit" class="btn btn-primary mb-2">Send Message</button>
+      </form>
+    {% else%}
+    <p><em>already have a chat.</em></p>
+    
+    {%endif%}
+    {%endif %}
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+    <div clas="pb-3">
+        <img src="/static/profile-pics/{{user['profile_path']}}" alt="profile pic" width="150" height="150">
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Profile Information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{user.full_name}}</td>
+        </tr>
+        <tr>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>{{user.birth_date}}</td>
+        </tr>
+        <tr>
+          <td>{{user.country}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+
+  </div>
+  <div class="col-md-6">
+    <h3>Recent Activity</h3>
+
+
+    <div class="list-group">
+      {% if postsandlikes != None %}
+        {% for postandlike in postsandlikes %}
+          <a href="/viewpost/{{ postandlike[0].post_id }}" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{postandlike[0].poster_full_name}}</h5>
+              <small>{{ postandlike[0].post_datetime}}</small>
+            </div>
+            <p class="mb-1">{{postandlike[0].post_entry}}</p>
+
+            <div class="dropdown">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ postandlike[1]|length }} Likes
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {% if postandlike[1] != None %}
+                {% for like in postandlike[1] %}
+                  <a class="dropdown-item" href="/profile/{{like.liker_id}}">{{like.like_name}}</a>
+                {%endfor%}
+                {% endif %}
+              </div>
+              {% if postandlike[2] != true%}
+              <a href="/likepostprofile/{{ postandlike[0].post_id }}">
+                <button type="button"  class="btn btn-secondary">Like Post</button>
+              </a>
+              {%endif%}
+            </div>
+          </a>
+
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+</div>
+  
+{% endblock %}

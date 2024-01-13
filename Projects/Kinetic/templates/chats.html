@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<!-- open conversation with specific person by unique id number -->
+
+{% block head %}<style>
+  img {
+    border-radius: 50%;
+  }
+  </style> {% endblock %}
+
+{% block body %}
+<!--TODO create function to display your chats if chat is selected you will be redirected to messages and all messages with the selected chat id will be listed in order by date-->
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-5">
+<table class="table">
+    <thead>
+      <tr>
+        <th>Your Conversations</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if sChats != None %}
+          {% for chat in schatlist %}
+            <tr>
+              <td><img src="/static/profile-pics/{{chat[1].profile_path}}" alt="pic" height="50" width="50"><a href="/messages/{{ chat[0].chat_id }}">  {{chat[0].receive_name}}</a></td> 
+            </tr>
+          {% endfor %}
+      {% endif %}
+      {% if rChats != None %}
+          {% for chat in rchatlist %}
+              <tr>
+                <td><img src="/static/profile-pics/{{chat[1].profile_path}}" alt="pic" height="50" width="50"><a href="/messages/{{ chat[0].chat_id }}">  {{chat[0].send_name}}</a></td> 
+              </tr>
+          {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

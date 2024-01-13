@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+<!-- open conversation with specific person by unique id number -->
+
+{% block head %} {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+    <div class="col-2"></div>
+      <div class="col-8">
+        <a href="/profile/{{poster.user_id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{poster.full_name}}</h5>
+                <small>{{ curpost.post_datetime}}</small>
+            </div>
+            <p class="mb-1">{{curpost.post_entry}}</p>
+
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ likes|length }} Likes
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    {% if likes != None %}
+                    {% for like in likes %}
+                    <a class="dropdown-item" href="/profile/{{like.liker_id}}">{{like.like_name}}</a>
+                    {%endfor%}
+                    {% endif %}
+                </div>
+                {% if alreadyLikedPost != True %}
+                <a href="/likepostview/{{ curpost.post_id }}">
+                    <button type="button"  class="btn btn-secondary">Like Post</button>
+                </a>
+                {%endif%}
+
+                {% if curpost.poster_id == False %}
+            <a href="/deletepost/{{ curpost.post_id }}">
+                <button type="button"  class="btn btn-secondary">Delete Post</button>
+            </a>
+
+            <a href="/editpost/{{ curpost.post_id }}">
+                <button type="button"  class="btn btn-secondary">Edit Post</button>
+            </a>
+            {%endif%}
+            </div>
+            
+        </a>
+        </div>
+    <div class="col-2"></div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row">
+    <div class="col-3"></div>
+      <div class="col-7">
+        <h3></h3>
+        <div class="list-group">
+          {% if comsandlikes != None %}
+            {% for comandlike in comsandlikes %} <!-- for each [comment,[likes]] in commentsandlikes -->
+
+              <a href="/profile/{{comandlike[0].commenter_id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{comandlike[0].commenter_name}}</h5>
+                  <small>{{ comandlike[0].comment_datetime}}</small>
+                </div>
+                <p class="mb-1">{{comandlike[0].comment_entry}}</p>
+
+                <div class="dropdown">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ comandlike[1]|length }} Likes
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    {% if comandlike[1] != None %}
+                    {% for like in comandlike[1] %}
+                      <a class="dropdown-item" href="/profile/{{like.liker_id}}">{{like.like_name}}</a>
+                    {%endfor%}
+                    {% endif %}
+                  </div>
+                  {% if comandlike[2] != True %}
+                  <a href="/likecomment/{{ comandlike[0].comment_id }}">
+                    <button type="button"  class="btn btn-secondary">Like Comment</button>
+                  </a>
+                  {%endif%}
+                </div>
+              </a>
+
+            {% endfor %}
+          {% endif %}
+        </div>
+      
+    </div>
+  <div class="col-2"></div>
+</div>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+    <div class="col-3"></div>
+      <div class="col-7">
+            <form action="/comment/{{ curpost.post_id }}" method="Post">
+                <div class="form-group" >
+                <input type="text" name="comment" class="form-control" id="newComment"  placeholder="comment">
+                <small id="emailHelp" class="form-text text-muted">Leave a comment!</small>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

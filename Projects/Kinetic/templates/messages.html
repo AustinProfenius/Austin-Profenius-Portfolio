@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+<!-- list of conversations. by order of most recent message? -->
+
+{% block head %} 
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <table class="table" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Chat with {{ chatWith }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="width:50%">{{ chatWith }}</td> 
+
+                        <td style="width:50%">{{  currUserName }}</td>
+                    </tr>
+                    {% if allMessage != None %}
+                        {% for message in allMessage %}
+                            <tr>
+                                {%if message.send_id != userId%}
+
+                                    <td >{{ message.message_entry }}</td> 
+                                    <td> </td>
+                                {%else%}
+                                    <td> </td>
+                                    <td >{{ message.message_entry }}</td>
+                                {%endif%}
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+    <div class="col-3"></div>
+      <div class="col-7">
+            <form action="/newmessage/{{ chatID }}" method="Post">
+                <div class="form-group" >
+                <input type="text" name="message" class="form-control" id="newMessage"  placeholder="message">
+                <small id="sendMessage" class="form-text text-muted">Reply</small>
+                <button type="submit" class="btn btn-primary">Reply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- TODO list messages redirected here from chats page only list chats with matching chat id-->
+{% endblock %}
