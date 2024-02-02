@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView500000"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView100000"
+        app:srcCompat="@drawable/reward_500000" />
+
+    <ImageView
+        android:id="@+id/imageView100000"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView50000"
+        app:srcCompat="@drawable/reward_100000" />
+
+    <ImageView
+        android:id="@+id/imageView50"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:srcCompat="@drawable/reward_50" />
+
+    <ImageView
+        android:id="@+id/imageView100"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView50"
+        app:srcCompat="@drawable/reward_100" />
+
+    <ImageView
+        android:id="@+id/imageView300"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView100"
+        app:srcCompat="@drawable/reward_300" />
+
+    <ImageView
+        android:id="@+id/imageView1000"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView300"
+        app:srcCompat="@drawable/reward_1000" />
+
+    <ImageView
+        android:id="@+id/imageView10000"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1000"
+        app:srcCompat="@drawable/reward_10000" />
+
+    <ImageView
+        android:id="@+id/imageView50000"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10000"
+        app:srcCompat="@drawable/reward_50000" />
+
+    <ImageView
+        android:id="@+id/caseclosed6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed5"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed4"
+        app:srcCompat="@drawable/suitcase_position_6" />
+
+    <ImageView
+        android:id="@+id/caseclosed7"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed5"
+        app:srcCompat="@drawable/suitcase_position_7" />
+
+    <ImageView
+        android:id="@+id/caseclosed8"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed7"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed6"
+        app:srcCompat="@drawable/suitcase_position_8" />
+
+    <ImageView
+        android:id="@+id/caseclosed9"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed7"
+        app:srcCompat="@drawable/suitcase_position_9" />
+
+    <ImageView
+        android:id="@+id/caseclosed10"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed9"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed8"
+        app:srcCompat="@drawable/suitcase_position_10" />
+
+    <ImageView
+        android:id="@+id/caseclosed5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed3"
+        app:srcCompat="@drawable/suitcase_position_5" />
+
+    <ImageView
+        android:id="@+id/caseclosed4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed3"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed2"
+        app:srcCompat="@drawable/suitcase_position_4" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/deal_no_deal_logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Choose 4 Cases"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/caseclosed1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/suitcase_position_1" />
+
+    <ImageView
+        android:id="@+id/caseclosed2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed1"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/suitcase_position_2" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/reward_1" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="120dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toEndOf="@+id/caseclosed2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView1"
+        app:srcCompat="@drawable/reward_10" />
+
+    <ImageView
+        android:id="@+id/caseclosed3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed1"
+        app:srcCompat="@drawable/suitcase_position_3" />
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="57dp"
+        android:text="Reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed10" />
+
+    <Button
+        android:id="@+id/buttonDeal"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        android:text="Deal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed10" />
+
+    <Button
+        android:id="@+id/buttonNoDeal"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="15dp"
+        android:text="No Deal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonDeal"
+        app:layout_constraintTop_toBottomOf="@+id/caseclosed10" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
